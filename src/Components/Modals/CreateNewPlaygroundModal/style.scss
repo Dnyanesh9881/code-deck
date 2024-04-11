@@ -1,0 +1,39 @@
+.modal{
+    background-color: rgba(153,153,153,0.5);
+    position: fixed;
+    top :0;
+    bottom: 0;
+    left: 0;
+    right:0;
+    // width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+.inner-modal{
+    display: flex;
+    flex-direction: column;
+    gap:1.3rem;
+    width: 35%;
+    background-color: white;
+    padding: 2.5rem 2rem;
+    border-radius: 1rem;
+    .item{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+         input, select{
+            padding: 0.6rem;
+         }
+         .modal-btn{
+            padding: 0.6rem;
+            cursor: pointer;
+            background-color: black;
+            color: white;
+            border:none;
+            border-radius: 0.4rem;
+            font-size: 16px;
+         }
+    }
+}
+}
