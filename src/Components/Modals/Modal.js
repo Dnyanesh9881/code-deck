@@ -6,7 +6,7 @@ import NewPlaygroundModal from "./NewPlaygroundModal/NewPlaygroundModal";
 import EditCard from "./EditCard/EditCard";
 import EditFolder from "./EditFolder/EditFolder";
 
-function Modal() {
+const Modal=()=>{
   const modalFeatures = useContext(modalContext);
 
   return (

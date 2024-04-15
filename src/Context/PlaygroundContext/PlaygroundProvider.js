@@ -16,13 +16,13 @@ const initialState = [
       {
         id: v4(),
         title: "Array Implementation",
-        language: "Java",
+        language: "java",
         code: `System.out.println("Hello World")`,
       },
     ],
   },
 ];
-const languageCodes = {
+export const languageCodes = {
   java: `import java.util.*;
 
   public class Main {
@@ -39,7 +39,7 @@ const languageCodes = {
       return 0;
   }`,
   python: `print ("Hello, World!")`,
-  javascript: `print ("Hello, World!")`,
+  javascript: `console.log("Hello, World!");`,
 };
 export const PlaygroundProvider = ({ children }) => {
   const [folders, setFolders] = useState(() => {
@@ -151,6 +151,25 @@ export const PlaygroundProvider = ({ children }) => {
     setFolders(foldersCopy);
   }
 
+ 
+function save(folderId, fileId, title, language, code){
+      const foldersCopy = [...folders];
+    for (let i = 0; i < foldersCopy.length; i++) {
+      if (foldersCopy[i].id === folderId) {
+        for (let j = 0; j < foldersCopy[i].files.length; j++) {
+          if (foldersCopy[i].files[j].id === fileId) {
+            foldersCopy[i].files[j].title=title;
+            foldersCopy[i].files[j].language=language;
+            foldersCopy[i].files[j].code=code
+            break;
+          }
+        }
+        break;
+      }
+    }
+    setFolders(foldersCopy);
+    }
+
   useEffect(() => {
     localStorage.setItem("data", JSON.stringify(folders));
   }, [folders]);
@@ -167,6 +186,7 @@ export const PlaygroundProvider = ({ children }) => {
         editFolder,
         deleteFile,
         deleteFolder,
+        save
       }}
     >
       {children}

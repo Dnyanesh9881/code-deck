@@ -1,36 +1,48 @@
-import React, { useContext } from 'react'
-import { modalContext } from '../../Context/ModalContext/ModalProvider'
-import { PlaygroundContext } from '../../Context/PlaygroundContext/PlaygroundProvider';
+import React, { useContext } from "react";
+import { modalContext } from "../../Context/ModalContext/ModalProvider";
+import { PlaygroundContext } from "../../Context/PlaygroundContext/PlaygroundProvider";
+import { useNavigate } from "react-router-dom";
 
-function Card({file}) {
-  const modalFeatures=useContext(modalContext);
-  const {deleteFile}=useContext(PlaygroundContext);
-   
+function Card({ file }) {
+  const modalFeatures = useContext(modalContext);
+  const { deleteFile } = useContext(PlaygroundContext);
+  const navigate = useNavigate();
 
- function openEditCardModal(){
-  modalFeatures.setModalPayload({folderId:file.folderId, fileId:file.card.id})
- 
-  console.log(modalFeatures.modalPayload);
-modalFeatures.openModal("EDIT_FILE");
- }
- function deleteThisCard(){
-    deleteFile(file.folderId, file.card.id)
- }
+  function openEditCardModal(e) {
+    e.stopPropagation(); 
+    modalFeatures.setModalPayload({
+      folderId: file.folderId,
+      fileId: file.card.id,
+    });
+    modalFeatures.openModal("EDIT_FILE");
+  }
+  function deleteThisCard(e) {
+    e.stopPropagation(); 
+
+    deleteFile(file.folderId, file.card.id);
+  }
+  function goToPlaygroung() {
+    navigate(`playground/${file.folderId}/${file.card.id}`);
+  }
   return (
-    <div className="card">
-    <div className="card-items">
+    <div className="card" onClick={goToPlaygroung}>
+      <div className="card-items">
         <img alt="logo" src="logo.png" />
         <div className="card-title-language">
-            <p>{file.card.title}</p>
-            <p>language: {file.card.language}</p>
+          <p>{file.card.title}</p>
+          <p>language: {file.card.language}</p>
         </div>
+      </div>
+      <div className="card-btns">
+        <span class="material-symbols-outlined" onClick={(e)=>deleteThisCard(e)}>
+          delete
+        </span>
+        <span class="material-symbols-outlined" onClick={(e)=>openEditCardModal(e)}>
+          edit
+        </span>
+      </div>
     </div>
-    <div className="card-btns">
-    <span class="material-symbols-outlined" onClick={deleteThisCard}>delete</span>
-  <span class="material-symbols-outlined" onClick={openEditCardModal}>edit</span>
-    </div>
-</div>
-  )
+  );
 }
 
-export default Card
+export default Card;
