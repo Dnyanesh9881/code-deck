@@ -9,6 +9,8 @@ const PlayGroundPage = () => {
   const[inputValue, setInputValue]=useState("");
   const[outputValue, setOutputValue]=useState("");
   const[isLoading, setIsLoading]=useState(false);
+  const[isFullScreen, setIsFullScreen]=useState(false);
+
   const callBack=({apiStatus, data, message})=>{
       if(apiStatus==="loading"){
         setIsLoading(true);
@@ -26,13 +28,13 @@ const PlayGroundPage = () => {
       }
   }
   return (
-    <div className="playground-container">
-      <div className="playground-header">
+    <div className="playground-container" >
+      <div className="playground-header" style={isFullScreen?{display:"none"}:{}}>
         <img width="70px" src="/logo.png" alt="logo" />
         <h1 className="logo-heading">One Code</h1>
       </div>
       <div className="playground-editor-container">
-        <EditorReact folderId={folderId} fileId={fileId} inputValue={inputValue} isLoading={isLoading} callBack={callBack}/>
+        <EditorReact folderId={folderId} fileId={fileId} inputValue={inputValue} isLoading={isLoading} callBack={callBack} setIsFullScreen={setIsFullScreen}/>
         <InputOutput inputValue={inputValue} outputValue={outputValue} setInputValue={setInputValue} setOutputValue={setOutputValue}  />
       </div>
     </div>

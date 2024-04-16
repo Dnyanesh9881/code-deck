@@ -6,7 +6,10 @@ const EditorFooter = ({
   currentLanguage,
   callBack,
   inputValue,
+  setIsFullScreen
 }) => {
+
+  console.log(inputValue);
   function importCode(e) {
     const file = e.target.files[0];
     const type = file.type.includes("text");
@@ -54,7 +57,7 @@ const EditorFooter = ({
       stdin: btoa(inputValue),
     }),
   };
-  
+
   async function getToken() {
     try {
       callBack({
@@ -116,7 +119,7 @@ const EditorFooter = ({
 
   return (
     <div className="editor-footer">
-      <button className="btn">
+      <button className="btn" onClick={()=>setIsFullScreen((value)=>!value)}>
         <span class="material-symbols-outlined">fullscreen</span>
         <span>Full Screen</span>
       </button>

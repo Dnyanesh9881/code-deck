@@ -5,7 +5,7 @@ import EditorFooter from "./EditorFooter/EditorFooter";
 import { PlaygroundContext} from "../../Context/PlaygroundContext/PlaygroundProvider";
 import Loading from "../../Components/Loading/Loading";
 
-const EditorReact = ({ folderId, fileId, inputValue, isLoading, callBack}) => {
+const EditorReact = ({ folderId, fileId, inputValue, isLoading, callBack, setIsFullScreen}) => {
   const [theme, setTheme] = useState("vs-dark");
   const {folders}=useContext(PlaygroundContext);
   let currentObj=null;
@@ -45,7 +45,7 @@ const EditorReact = ({ folderId, fileId, inputValue, isLoading, callBack}) => {
           onChange={onChangeCodeEditor}
         />
       </div>
-      <EditorFooter setCode={setCurrentCode} currentCode={currentCode} currentLanguage={currentLanguage} inputValue={inputValue} callBack={callBack}/>
+      <EditorFooter setCode={setCurrentCode} currentCode={currentCode} currentLanguage={currentLanguage} inputValue={inputValue} callBack={callBack} setIsFullScreen={setIsFullScreen}/>
    {
     isLoading && <Loading />
    }
