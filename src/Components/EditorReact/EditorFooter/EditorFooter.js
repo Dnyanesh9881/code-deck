@@ -25,14 +25,20 @@ const EditorFooter = ({
       alert("please choose a programming file");
     }
   }
+   const downloadLanguageCode={
+    java:"java",
+    javascript:"js",
+    python:"py",
+    cpp:"cpp"
 
+   }
   function exportCode() {
     const blob = new Blob([currentCode], { type: "text/plain" });
     console.log(blob);
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = "myfile.text";
+    link.download = `myfile.${downloadLanguageCode[currentLanguage]}`;
     link.click();
   }
   const languageId = {
