@@ -14,6 +14,7 @@ function createNewPlayground(e){
   const language=e.target.language.value
   console.log(folderName, fileName, language);
 addNewPlayground(folderName, fileName, language)
+modalFeatures.closeModal();
 }
   return (
     <div className='modal'>
