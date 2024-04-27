@@ -131,7 +131,7 @@ export const PlaygroundProvider = ({ children }) => {
   }
 
   function deleteFile(folderId, fileId) {
-    console.log(folderId, fileId);
+    // console.log(folderId, fileId);
 
     const foldersCopy = [...folders];
 
@@ -143,7 +143,7 @@ export const PlaygroundProvider = ({ children }) => {
 
         foldersCopy[i].files = newFiles;
 
-        console.log(newFiles);
+        // console.log(newFiles);
         break;
       }
     }

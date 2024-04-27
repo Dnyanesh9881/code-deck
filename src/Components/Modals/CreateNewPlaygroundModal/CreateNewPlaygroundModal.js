@@ -12,7 +12,7 @@ function createNewPlayground(e){
   const folderName=e.target.folderName.value
   const fileName=e.target.fileName.value
   const language=e.target.language.value
-  console.log(folderName, fileName, language);
+  // console.log(folderName, fileName, language);
 addNewPlayground(folderName, fileName, language)
 modalFeatures.closeModal();
 }

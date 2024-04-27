@@ -12,12 +12,12 @@ const EditorHeader = ({currentLanguage, setCurrentLanguage, theme, setTheme, fol
             folderId: folderId,
             fileId: fileId,
           });
-        console.log("click is working");
+        // console.log("click is working");
        }
 
        function saveCode(){
           save(folderId, fileId, currentTitle, currentLanguage, currentCode);
-          console.log(folderId, fileId, currentTitle, currentLanguage, currentCode);
+          // console.log(folderId, fileId, currentTitle, currentLanguage, currentCode);
        }
        function updateLanguage(e){
         setCurrentLanguage(e.target.value);

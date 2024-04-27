@@ -9,11 +9,11 @@ const EditorFooter = ({
   setIsFullScreen
 }) => {
 
-  console.log(inputValue);
+  // console.log(inputValue);
   function importCode(e) {
     const file = e.target.files[0];
     const type = file.type.includes("text");
-    console.log(type);
+    // console.log(type);
     if (type) {
       const filereader = new FileReader();
       filereader.readAsText(file);
@@ -34,7 +34,7 @@ const EditorFooter = ({
    }
   function exportCode() {
     const blob = new Blob([currentCode], { type: "text/plain" });
-    console.log(blob);
+    // console.log(blob);
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
@@ -78,7 +78,7 @@ const EditorFooter = ({
         try {
           apiSubmissionResult = await runCode(token);
           statusCode = apiSubmissionResult.status_id;
-          console.log(apiSubmissionResult.status);
+          // console.log(apiSubmissionResult.status);
         } catch (error) {
           callBack({
             apiStatus: "error",
